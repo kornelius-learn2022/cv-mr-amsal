@@ -99,21 +99,41 @@ const CV_DATA = {
         "Finalist in the Innovative Teacher of Surabaya competition (2023)",
     },
   ],
-  contact: {
-    phone: "+685731353511",
-    email: "amsalnugroho63@guru.smp.belajar.id",
-    instagram: "@amsaldwi",
-    address: "Manyar Dukuh 40, Surabaya",
-  },
 };
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [fadeLoading, setFadeLoading] = useState(false);
-
   const [darkMode, setDarkMode] = useState(false);
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+
+  const [navMenu, setNavMenu] = useState(true);
+  const [showSide, setshowSide] = useState(false);
+
+  //sidebar
+  (useEffect(() => {
+    const handleResize = () => {
+      // 768px biasanya menjadi batas standar untuk tablet/HP (mirip 'md' di Tailwind)
+      if (window.innerWidth < 700) {
+        setshowSide(true);
+      } else {
+        setshowSide(false);
+      }
+    };
+    handleResize();
+
+    // Pasang "pendengar" (event listener) untuk setiap perubahan ukuran layar
+    window.addEventListener("resize", handleResize);
+
+    // Proses pembersihan (Cleanup function)
+    // Sangat penting agar tidak terjadi memory leak saat komponen dihapus
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }),
+    []);
+
   // Fungsi toggle tema
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -170,7 +190,7 @@ function App() {
     { name: "Awards", href: "#awards" },
     { name: "Contact", href: "#contact" },
   ];
-  console.log(isLoading);
+
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300">
       {isLoading && (
@@ -233,15 +253,51 @@ function App() {
               </a>
             ))}
           </div>
-
+          <div>
+            <button onClick={toggleDarkMode}>
+              {darkMode ? "☀️ Light" : "🌙 Dark"}
+            </button>
+            {showSide &&
+              (navMenu ? (
+                <button
+                  className="ml-2 p-3 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-blue-400 transition-all"
+                  onClick={() => setNavMenu(false)}
+                >
+                  ☰
+                </button>
+              ) : (
+                <button
+                  className="ml-2 py-3 px-3.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-blue-400 transition-all"
+                  onClick={() => setNavMenu(true)}
+                >
+                  X
+                </button>
+              ))}
+          </div>
           {/* Kanan: Dark Mode Toggle */}
-          <button
-            onClick={toggleDarkMode}
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-blue-400 transition-all"
-          >
-            {darkMode ? "☀️" : "🌙"}
-          </button>
         </div>
+        {!navMenu && (
+          // Menggunakan 'absolute' atau 'fixed' dengan z-index tinggi agar menu melayang di atas konten web
+          // bg-transparent memastikan sisa layar di bawah menu tidak tertutup warna apapun
+          <div className="absolute left-0 w-full z-50 bg-transparent transition-colors duration-300">
+            {/* Container menu: Background putih, bayangan di bawah (shadow-md), dan ujung bawah melengkung */}
+            <div className="w-full bg-white flex flex-col shadow-md rounded-b-xl overflow-hidden pb-4 pt-2">
+              {/* Item 1 */}
+              {/* hover:bg-gray-50 dan hover:text-blue-600 memberikan efek saat disentuh */}
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="hover:text-blue-500 transition-colors"
+                >
+                  <div className="py-3 px-6 text-gray-500 hover:bg-gray-50 hover:text-blue-600 cursor-pointer transition-all duration-200 flex justify-between items-center">
+                    <h2 className="text-[17px] font-light">{link.name}</h2>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Konten dummy untuk testing scroll */}
