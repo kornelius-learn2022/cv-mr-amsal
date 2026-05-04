@@ -581,7 +581,7 @@ function App() {
           </div>
 
           {/* Grid Informasi Kontak */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {/* 1. Phone */}
             <div className="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-3xl border border-slate-700/50 hover:bg-slate-800 hover:border-blue-500 transition-all duration-300 group">
               <div className="p-4 bg-blue-600/20 text-blue-400 rounded-full mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
@@ -690,33 +690,6 @@ function App() {
             </div>
 
             {/* 4. Address */}
-            <div className="flex flex-col items-center text-center p-6 bg-slate-800/50 rounded-3xl border border-slate-700/50 hover:bg-slate-800 hover:border-blue-500 transition-all duration-300 group">
-              <div className="p-4 bg-blue-600/20 text-blue-400 rounded-full mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                {/* Ikon Home/Map */}
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                  />
-                </svg>
-              </div>
-              <p className="text-blue-500 text-xs font-bold uppercase tracking-widest mb-2">
-                Address
-              </p>
-              <p className="font-medium text-slate-200">
-                Manyar Dukuh 40,
-                <br />
-                Surabaya
-              </p>
-            </div>
           </div>
 
           {/* Garis Pemisah & Footprint Kornelius */}
