@@ -294,7 +294,7 @@ function App() {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent z-10"></div>
 
                 <img
-                  src="./src/assets/foto-mr-amsal-ai.png"
+                  src="foto-mr-amsal-ai.png"
                   alt="Amsal Dwi Nugroho"
                   className="w-full h-full object-cover"
                   onError={(e) => {
