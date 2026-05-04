@@ -297,10 +297,6 @@ function App() {
                   src="foto-mr-amsal-ai.png"
                   alt="Amsal Dwi Nugroho"
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.src =
-                      "https://images.unsplash.com/photo-1544717297-fa95b3ee51f3?q=80&w=2070&auto=format&fit=crop";
-                  }}
                 />
               </div>
             </div>
