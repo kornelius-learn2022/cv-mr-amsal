@@ -100,7 +100,7 @@ const CV_DATA = {
     },
   ],
   contact: {
-    phone: "085731353511",
+    phone: "+685731353511",
     email: "amsalnugroho63@guru.smp.belajar.id",
     instagram: "@amsaldwi",
     address: "Manyar Dukuh 40, Surabaya",
@@ -283,7 +283,9 @@ function App() {
               </div>
 
               <button className="mt-4 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full transition-all hover:scale-105 shadow-xl shadow-blue-500/20">
-                Let's Collaborate
+                <a href="mailto:amsalnugroho63@guru.smp.belajar.id">
+                  Let's Collaborate
+                </a>
               </button>
             </div>
 
@@ -546,7 +548,11 @@ function App() {
               <p className="text-blue-500 text-xs font-bold uppercase tracking-widest mb-2">
                 Phone
               </p>
-              <p className="font-medium text-slate-200">085731353511</p>
+
+              <p className="font-medium text-slate-200">
+                {" "}
+                <a href="https://wa.me/+6285731353511">+6285731353511</a>
+              </p>
             </div>
 
             {/* 2. Email */}
